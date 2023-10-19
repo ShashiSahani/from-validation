@@ -23,7 +23,23 @@ function validateForm(e) {
         message.style.color = passwordMatch ? message.style.color : 'red';
         messageContainer.style.borderColor = passwordMatch ? messageContainer.style.borderColor : 'red';
         [password1, password2].forEach(input => input.style.borderColor = passwordMatch ? 'green' : 'red');
+   if(isValid && passwordMatch){
+    message.textContent="Successfully Registered!"
+    storeFromData();
+   }
     }
+function storeFromData(){
+
+    const user={
+        name:form.name.value,
+        email:form.email.value,
+        phone:form.phone.value,
+        website:form.website.value,
+        password1:form.password1.value,
+        password2:form.password2.value,
+    }
+    console.log(user)
+}
 
     // Event Listener
-    form.addEventListener('submit', validateForm);
+    form.addEventListener('submit', validateForm,storeFromData);
